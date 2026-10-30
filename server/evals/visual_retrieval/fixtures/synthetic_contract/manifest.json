@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "dataset_id": "synthetic-contract-v1",
+  "kind": "synthetic_contract",
+  "description": "手写中文元数据契约样例；没有真实照片、真实用户或图文向量；用于评测代码和现有规则基线回归，不证明高召回率。",
+  "annotation_protocol": "人工设计正例、别名、同事件多帧、时间范围、移动记录、语义漏召和无答案边界。样例问题已知记录内容，不能用于真实泛化结论。"
+}

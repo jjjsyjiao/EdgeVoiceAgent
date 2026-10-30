@@ -1,0 +1,3481 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-28T14:42:05.623780+00:00",
+  "dataset": {
+    "dataset_id": "synthetic-contract-v1",
+    "kind": "synthetic_contract",
+    "sha256": "6ab0459dff4c40fe74c63fddb27f828e0125cc59558ee77a291c1c77543de3b4",
+    "records": 9,
+    "events": 8,
+    "queries": 16
+  },
+  "adapter": "production_metadata_score",
+  "warnings": [
+    "SYNTHETIC CONTRACT FIXTURE ONLY: not real user data and not evidence of high semantic or multimodal recall.",
+    "Retrieval metrics condition on labeled retained evidence; they are not end-to-end daily recall or final answer correctness.",
+    "Wilson intervals assume independent queries; correlated families/users reduce effective sample size. Real deployment decisions need grouped resampling."
+  ],
+  "summary": {
+    "query_count": 16,
+    "available_query_count": 11,
+    "known_no_answer_query_count": 4,
+    "unknown_coverage_query_count": 1,
+    "metrics": {
+      "candidate_hit_at_1": {
+        "numerator": 9,
+        "denominator": 11,
+        "estimate": 0.8181818181818182,
+        "wilson_95": {
+          "lower": 0.523019438039156,
+          "upper": 0.9486323102539149
+        }
+      },
+      "event_recall_at_1": {
+        "query_count": 11,
+        "macro_estimate": 0.6818181818181818,
+        "relevant_events_found": 9,
+        "relevant_events_total": 14,
+        "micro_estimate": 0.6428571428571429,
+        "confidence_interval": null,
+        "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+      },
+      "candidate_hit_at_3": {
+        "numerator": 9,
+        "denominator": 11,
+        "estimate": 0.8181818181818182,
+        "wilson_95": {
+          "lower": 0.523019438039156,
+          "upper": 0.9486323102539149
+        }
+      },
+      "event_recall_at_3": {
+        "query_count": 11,
+        "macro_estimate": 0.8181818181818182,
+        "relevant_events_found": 12,
+        "relevant_events_total": 14,
+        "micro_estimate": 0.8571428571428571,
+        "confidence_interval": null,
+        "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+      },
+      "candidate_hit_at_10": {
+        "numerator": 9,
+        "denominator": 11,
+        "estimate": 0.8181818181818182,
+        "wilson_95": {
+          "lower": 0.523019438039156,
+          "upper": 0.9486323102539149
+        }
+      },
+      "event_recall_at_10": {
+        "query_count": 11,
+        "macro_estimate": 0.8181818181818182,
+        "relevant_events_found": 12,
+        "relevant_events_total": 14,
+        "micro_estimate": 0.8571428571428571,
+        "confidence_interval": null,
+        "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+      },
+      "candidate_hit_at_50": {
+        "numerator": 9,
+        "denominator": 11,
+        "estimate": 0.8181818181818182,
+        "wilson_95": {
+          "lower": 0.523019438039156,
+          "upper": 0.9486323102539149
+        }
+      },
+      "event_recall_at_50": {
+        "query_count": 11,
+        "macro_estimate": 0.8181818181818182,
+        "relevant_events_found": 12,
+        "relevant_events_total": 14,
+        "micro_estimate": 0.8571428571428571,
+        "confidence_interval": null,
+        "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+      },
+      "final_hit_at_3": {
+        "numerator": 9,
+        "denominator": 11,
+        "estimate": 0.8181818181818182,
+        "wilson_95": {
+          "lower": 0.523019438039156,
+          "upper": 0.9486323102539149
+        }
+      },
+      "latest_event_hit_at_1": {
+        "numerator": 1,
+        "denominator": 1,
+        "estimate": 1.0,
+        "wilson_95": {
+          "lower": 0.20654931437723745,
+          "upper": 1.0
+        }
+      },
+      "no_answer_false_positive_rate": {
+        "numerator": 0,
+        "denominator": 4,
+        "estimate": 0.0,
+        "wilson_95": {
+          "lower": 0.0,
+          "upper": 0.4898908364545973
+        }
+      },
+      "error_rate": {
+        "numerator": 0,
+        "denominator": 16,
+        "estimate": 0.0,
+        "wilson_95": {
+          "lower": 0.0,
+          "upper": 0.1936076805344365
+        }
+      },
+      "abstention_rate": {
+        "numerator": 6,
+        "denominator": 16,
+        "estimate": 0.375,
+        "wilson_95": {
+          "lower": 0.18481232558863633,
+          "upper": 0.6135895945449727
+        }
+      }
+    }
+  },
+  "coverage": {
+    "counts": {
+      "available": 11,
+      "expired": 1,
+      "not_captured": 1,
+      "unknown": 1,
+      "verified_absent": 2
+    },
+    "audited_capture_availability": {
+      "numerator": 11,
+      "denominator": 13,
+      "estimate": 0.8461538461538461,
+      "wilson_95": {
+        "lower": 0.5776536898051745,
+        "upper": 0.9567418216419186
+      }
+    },
+    "availability_note": "Denominator includes available/not_captured/expired only; verified absence and unknown coverage are excluded. This is labeled corpus coverage, not continuous recording coverage."
+  },
+  "constraints": {
+    "passed": true,
+    "violation_count": 0,
+    "counts_by_reason": {},
+    "violations": []
+  },
+  "groups": {
+    "intent": {
+      "compare": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "latest": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 0.5,
+            "relevant_events_found": 1,
+            "relevant_events_total": 2,
+            "micro_estimate": 0.5,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "lookup": {
+        "query_count": 13,
+        "available_query_count": 8,
+        "known_no_answer_query_count": 4,
+        "unknown_coverage_query_count": 1,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 6,
+            "denominator": 8,
+            "estimate": 0.75,
+            "wilson_95": {
+              "lower": 0.40927543031016883,
+              "upper": 0.9285207872478909
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 8,
+            "macro_estimate": 0.625,
+            "relevant_events_found": 6,
+            "relevant_events_total": 10,
+            "micro_estimate": 0.6,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 6,
+            "denominator": 8,
+            "estimate": 0.75,
+            "wilson_95": {
+              "lower": 0.40927543031016883,
+              "upper": 0.9285207872478909
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 8,
+            "macro_estimate": 0.75,
+            "relevant_events_found": 8,
+            "relevant_events_total": 10,
+            "micro_estimate": 0.8,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 6,
+            "denominator": 8,
+            "estimate": 0.75,
+            "wilson_95": {
+              "lower": 0.40927543031016883,
+              "upper": 0.9285207872478909
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 8,
+            "macro_estimate": 0.75,
+            "relevant_events_found": 8,
+            "relevant_events_total": 10,
+            "micro_estimate": 0.8,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 6,
+            "denominator": 8,
+            "estimate": 0.75,
+            "wilson_95": {
+              "lower": 0.40927543031016883,
+              "upper": 0.9285207872478909
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 8,
+            "macro_estimate": 0.75,
+            "relevant_events_found": 8,
+            "relevant_events_total": 10,
+            "micro_estimate": 0.8,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 6,
+            "denominator": 8,
+            "estimate": 0.75,
+            "wilson_95": {
+              "lower": 0.40927543031016883,
+              "upper": 0.9285207872478909
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 4,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            }
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 13,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.22809537235419838
+            }
+          },
+          "abstention_rate": {
+            "numerator": 6,
+            "denominator": 13,
+            "estimate": 0.46153846153846156,
+            "wilson_95": {
+              "lower": 0.23206067809538303,
+              "upper": 0.7085620428549398
+            }
+          }
+        }
+      },
+      "recall": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      }
+    },
+    "split": {
+      "dev": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "test": {
+        "query_count": 15,
+        "available_query_count": 10,
+        "known_no_answer_query_count": 4,
+        "unknown_coverage_query_count": 1,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 8,
+            "denominator": 10,
+            "estimate": 0.8,
+            "wilson_95": {
+              "lower": 0.49016247153664183,
+              "upper": 0.9433178485456247
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 10,
+            "macro_estimate": 0.65,
+            "relevant_events_found": 8,
+            "relevant_events_total": 13,
+            "micro_estimate": 0.6153846153846154,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 8,
+            "denominator": 10,
+            "estimate": 0.8,
+            "wilson_95": {
+              "lower": 0.49016247153664183,
+              "upper": 0.9433178485456247
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 10,
+            "macro_estimate": 0.8,
+            "relevant_events_found": 11,
+            "relevant_events_total": 13,
+            "micro_estimate": 0.8461538461538461,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 8,
+            "denominator": 10,
+            "estimate": 0.8,
+            "wilson_95": {
+              "lower": 0.49016247153664183,
+              "upper": 0.9433178485456247
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 10,
+            "macro_estimate": 0.8,
+            "relevant_events_found": 11,
+            "relevant_events_total": 13,
+            "micro_estimate": 0.8461538461538461,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 8,
+            "denominator": 10,
+            "estimate": 0.8,
+            "wilson_95": {
+              "lower": 0.49016247153664183,
+              "upper": 0.9433178485456247
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 10,
+            "macro_estimate": 0.8,
+            "relevant_events_found": 11,
+            "relevant_events_total": 13,
+            "micro_estimate": 0.8461538461538461,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 8,
+            "denominator": 10,
+            "estimate": 0.8,
+            "wilson_95": {
+              "lower": 0.49016247153664183,
+              "upper": 0.9433178485456247
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 4,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.4898908364545973
+            }
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 15,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.20388330103584862
+            }
+          },
+          "abstention_rate": {
+            "numerator": 6,
+            "denominator": 15,
+            "estimate": 0.4,
+            "wilson_95": {
+              "lower": 0.1982449614134158,
+              "upper": 0.6425316987937539
+            }
+          }
+        }
+      }
+    },
+    "tag": {
+      "alias": {
+        "query_count": 3,
+        "available_query_count": 3,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 3,
+            "denominator": 3,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.4385029682449546,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 3,
+            "macro_estimate": 0.8333333333333334,
+            "relevant_events_found": 3,
+            "relevant_events_total": 4,
+            "micro_estimate": 0.75,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 3,
+            "denominator": 3,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.4385029682449546,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 3,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 4,
+            "relevant_events_total": 4,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 3,
+            "denominator": 3,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.4385029682449546,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 3,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 4,
+            "relevant_events_total": 4,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 3,
+            "denominator": 3,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.4385029682449546,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 3,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 4,
+            "relevant_events_total": 4,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 3,
+            "denominator": 3,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.4385029682449546,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 5.551115123125783e-17,
+              "upper": 0.5614970317550454
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 5.551115123125783e-17,
+              "upper": 0.5614970317550454
+            }
+          }
+        }
+      },
+      "appearance_in_note": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "coverage_unknown": {
+        "query_count": 1,
+        "available_query_count": 0,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 1,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_1": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_3": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_10": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_50": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "exact": {
+        "query_count": 2,
+        "available_query_count": 2,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 2,
+            "macro_estimate": 0.75,
+            "relevant_events_found": 2,
+            "relevant_events_total": 3,
+            "micro_estimate": 0.6666666666666666,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 2,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 3,
+            "relevant_events_total": 3,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 2,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 3,
+            "relevant_events_total": 3,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 2,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 3,
+            "relevant_events_total": 3,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          }
+        }
+      },
+      "expired": {
+        "query_count": 1,
+        "available_query_count": 0,
+        "known_no_answer_query_count": 1,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_1": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_3": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_10": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_50": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          }
+        }
+      },
+      "latest": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 0.5,
+            "relevant_events_found": 1,
+            "relevant_events_total": 2,
+            "micro_estimate": 0.5,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "moved_object": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 0.5,
+            "relevant_events_found": 1,
+            "relevant_events_total": 2,
+            "micro_estimate": 0.5,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "multiple_events": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "multiple_frames": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 0.5,
+            "relevant_events_found": 1,
+            "relevant_events_total": 2,
+            "micro_estimate": 0.5,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 2,
+            "relevant_events_total": 2,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      },
+      "no_answer": {
+        "query_count": 2,
+        "available_query_count": 0,
+        "known_no_answer_query_count": 2,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_1": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_3": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_10": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_50": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "abstention_rate": {
+            "numerator": 2,
+            "denominator": 2,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.34238022750665303,
+              "upper": 1.0
+            }
+          }
+        }
+      },
+      "not_captured": {
+        "query_count": 1,
+        "available_query_count": 0,
+        "known_no_answer_query_count": 1,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_1": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_3": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_10": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "event_recall_at_50": {
+            "query_count": 0,
+            "macro_estimate": null,
+            "relevant_events_found": 0,
+            "relevant_events_total": 0,
+            "micro_estimate": null,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          }
+        }
+      },
+      "synonym_gap": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          }
+        }
+      },
+      "time": {
+        "query_count": 2,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 1,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 2,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.6576197724933469
+            }
+          },
+          "abstention_rate": {
+            "numerator": 1,
+            "denominator": 2,
+            "estimate": 0.5,
+            "wilson_95": {
+              "lower": 0.09453120573423074,
+              "upper": 0.9054687942657693
+            }
+          }
+        }
+      },
+      "visual_only_gap": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 0.0,
+            "relevant_events_found": 0,
+            "relevant_events_total": 1,
+            "micro_estimate": 0.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          }
+        }
+      },
+      "visual_reference": {
+        "query_count": 1,
+        "available_query_count": 1,
+        "known_no_answer_query_count": 0,
+        "unknown_coverage_query_count": 0,
+        "metrics": {
+          "candidate_hit_at_1": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_1": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_3": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_10": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_10": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "candidate_hit_at_50": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "event_recall_at_50": {
+            "query_count": 1,
+            "macro_estimate": 1.0,
+            "relevant_events_found": 1,
+            "relevant_events_total": 1,
+            "micro_estimate": 1.0,
+            "confidence_interval": null,
+            "interval_note": "Event recall observations are correlated and fractional; no binomial Wilson interval is claimed."
+          },
+          "final_hit_at_3": {
+            "numerator": 1,
+            "denominator": 1,
+            "estimate": 1.0,
+            "wilson_95": {
+              "lower": 0.20654931437723745,
+              "upper": 1.0
+            }
+          },
+          "latest_event_hit_at_1": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "no_answer_false_positive_rate": {
+            "numerator": 0,
+            "denominator": 0,
+            "estimate": null,
+            "wilson_95": null
+          },
+          "error_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          },
+          "abstention_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "estimate": 0.0,
+            "wilson_95": {
+              "lower": 0.0,
+              "upper": 0.7934506856227626
+            }
+          }
+        }
+      }
+    }
+  },
+  "per_query": [
+    {
+      "query_id": "q-key-name",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "exact",
+        "multiple_frames"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 2,
+      "candidate_record_ids": [
+        "key-new-close",
+        "key-new-wide",
+        "key-old"
+      ],
+      "final_record_ids": [
+        "key-new-close",
+        "key-new-wide",
+        "key-old"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 0.5
+        },
+        "3": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 2,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-key-alias",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "alias"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 2,
+      "candidate_record_ids": [
+        "key-new-close",
+        "key-new-wide",
+        "key-old"
+      ],
+      "final_record_ids": [
+        "key-new-close",
+        "key-new-wide",
+        "key-old"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 0.5
+        },
+        "3": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 2,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-key-latest",
+      "split": "test",
+      "intent": "latest",
+      "tags": [
+        "latest",
+        "moved_object"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 2,
+      "candidate_record_ids": [
+        "key-new-close",
+        "key-new-wide",
+        "key-old"
+      ],
+      "final_record_ids": [
+        "key-new-close",
+        "key-new-wide",
+        "key-old"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 0.5
+        },
+        "3": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 3,
+          "distinct_valid_event_count": 2,
+          "relevant_events_found": 2,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 2,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": true,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-key-time",
+      "split": "test",
+      "intent": "recall",
+      "tags": [
+        "time",
+        "multiple_events"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [
+        "key-old"
+      ],
+      "final_record_ids": [
+        "key-old"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 1,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-lamp-alias",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "alias"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [
+        "lamp"
+      ],
+      "final_record_ids": [
+        "lamp"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 1,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-lamp-appearance",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "appearance_in_note"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [
+        "lamp"
+      ],
+      "final_record_ids": [
+        "lamp"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 1,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-lamp-compare",
+      "split": "test",
+      "intent": "compare",
+      "tags": [
+        "visual_reference"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [
+        "lamp"
+      ],
+      "final_record_ids": [
+        "lamp"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 1,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-semantic-synonym",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "synonym_gap"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [],
+      "final_record_ids": [],
+      "candidate": {
+        "1": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        },
+        "3": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        },
+        "10": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        },
+        "50": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": false,
+      "latest_hit_at_1": null,
+      "abstained": true,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-visual-only",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "visual_only_gap"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [],
+      "final_record_ids": [],
+      "candidate": {
+        "1": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        },
+        "3": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        },
+        "10": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        },
+        "50": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": false,
+          "event_recall": 0.0
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": false,
+      "latest_hit_at_1": null,
+      "abstained": true,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-glasses",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "exact"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [
+        "glasses"
+      ],
+      "final_record_ids": [
+        "glasses"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 1,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-negative",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "no_answer"
+      ],
+      "coverage": "verified_absent",
+      "relevant_event_count": 0,
+      "candidate_record_ids": [],
+      "final_record_ids": [],
+      "candidate": {
+        "1": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "3": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "10": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "50": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": null,
+      "latest_hit_at_1": null,
+      "abstained": true,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-negative-time",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "no_answer",
+        "time"
+      ],
+      "coverage": "verified_absent",
+      "relevant_event_count": 0,
+      "candidate_record_ids": [],
+      "final_record_ids": [],
+      "candidate": {
+        "1": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "3": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "10": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "50": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": null,
+      "latest_hit_at_1": null,
+      "abstained": true,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-not-captured",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "not_captured"
+      ],
+      "coverage": "not_captured",
+      "relevant_event_count": 0,
+      "candidate_record_ids": [],
+      "final_record_ids": [],
+      "candidate": {
+        "1": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "3": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "10": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "50": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": null,
+      "latest_hit_at_1": null,
+      "abstained": true,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-expired",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "expired"
+      ],
+      "coverage": "expired",
+      "relevant_event_count": 0,
+      "candidate_record_ids": [],
+      "final_record_ids": [],
+      "candidate": {
+        "1": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "3": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "10": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "50": {
+          "returned_record_count": 0,
+          "distinct_valid_event_count": 0,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": null,
+      "latest_hit_at_1": null,
+      "abstained": true,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-unknown",
+      "split": "test",
+      "intent": "lookup",
+      "tags": [
+        "coverage_unknown"
+      ],
+      "coverage": "unknown",
+      "relevant_event_count": 0,
+      "candidate_record_ids": [
+        "lamp"
+      ],
+      "final_record_ids": [
+        "lamp"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 0,
+          "hit": null,
+          "event_recall": null
+        }
+      },
+      "final_relevant_events_found": 0,
+      "final_hit_at_3": null,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    },
+    {
+      "query_id": "q-dev-cup",
+      "split": "dev",
+      "intent": "lookup",
+      "tags": [
+        "alias"
+      ],
+      "coverage": "available",
+      "relevant_event_count": 1,
+      "candidate_record_ids": [
+        "cup-dev"
+      ],
+      "final_record_ids": [
+        "cup-dev"
+      ],
+      "candidate": {
+        "1": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "3": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "10": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        },
+        "50": {
+          "returned_record_count": 1,
+          "distinct_valid_event_count": 1,
+          "relevant_events_found": 1,
+          "hit": true,
+          "event_recall": 1.0
+        }
+      },
+      "final_relevant_events_found": 1,
+      "final_hit_at_3": true,
+      "latest_hit_at_1": null,
+      "abstained": false,
+      "error": null,
+      "violations": []
+    }
+  ],
+  "media_integrity": {
+    "verified": false,
+    "note": "Media was not opened; use --verify-media with an explicitly selected dataset directory."
+  },
+  "adapter_details": {
+    "candidate_limit": 50,
+    "metadata_score_source_sha256": "e545e14436de9aa66ab05c370a60ef6cce16e5bab5c4a0faa578fe6edbc5497b",
+    "models_called": [],
+    "evaluates_image_content": false
+  }
+}

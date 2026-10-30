@@ -1,0 +1,46 @@
+services:
+  memory:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      CHROMA_DIR: /data/chroma
+      # st = 本地多语神经模型；离线/CI 可改为 hashing
+      EMBEDDING_PROVIDER: st
+      EMBEDDING_MODEL: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+      # 留空则仅用规则启发式提炼；配置后启用 LLM 提炼并自动回落
+      LLM_BASE_URL: ""
+      LLM_API_KEY: ""
+      LLM_MODEL: gpt-4o-mini
+      DEDUP_THRESHOLD: "0.95"
+      # V3 会话帧留存：TTL 24h + 全局 512MB 上限
+      SESSION_FRAME_DIR: /data/frames
+      SESSION_FRAME_TTL_HOURS: "24"
+      SESSION_FRAME_MAX_BYTES: "536870912"
+      # 新的主动视觉记忆，与旧会话帧目录独立；未配置凭据时接口返回 503。
+      VISUAL_MEMORY_DIR: /data/visual-memory
+      VISUAL_MEMORY_AUTH_TOKENS: ${VISUAL_MEMORY_AUTH_TOKENS:-}
+      VISUAL_MEMORY_RETENTION_DAYS: "7"
+      VISUAL_MEMORY_MAX_BYTES: "536870912"
+      VISUAL_MEMORY_OWNER_MAX_BYTES: "134217728"
+      # 图文索引与重排均在服务器调用；每个 SQLite 数据库只运行一个 worker 配置。
+      VISUAL_RETRIEVAL_ENABLED: ${VISUAL_RETRIEVAL_ENABLED:-false}
+      VISUAL_EMBEDDING_API_KEY: ${VISUAL_EMBEDDING_API_KEY:-}
+      VISUAL_EMBEDDING_MODEL: ${VISUAL_EMBEDDING_MODEL:-qwen3-vl-embedding}
+      VISUAL_EMBEDDING_DIMENSION: ${VISUAL_EMBEDDING_DIMENSION:-2560}
+      VISUAL_RERANK_ENABLED: ${VISUAL_RERANK_ENABLED:-false}
+      VISUAL_RERANK_MODEL: ${VISUAL_RERANK_MODEL:-qwen3-vl-rerank}
+    volumes:
+      # 记忆索引持久化，容器重建不丢数据
+      - chroma-data:/data/chroma
+      # 会话帧留存持久化
+      - frame-data:/data/frames
+      - visual-memory-data:/data/visual-memory
+      # 缓存已下载的嵌入模型，避免每次冷启动重新下载
+      - hf-cache:/root/.cache/huggingface
+
+volumes:
+  chroma-data:
+  frame-data:
+  visual-memory-data:
+  hf-cache:

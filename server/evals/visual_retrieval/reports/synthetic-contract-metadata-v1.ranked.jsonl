@@ -1,0 +1,16 @@
+{"query_id": "q-key-name", "candidate_record_ids": ["key-new-close", "key-new-wide", "key-old"], "final_record_ids": ["key-new-close", "key-new-wide", "key-old"], "abstained": false, "error": null}
+{"query_id": "q-key-alias", "candidate_record_ids": ["key-new-close", "key-new-wide", "key-old"], "final_record_ids": ["key-new-close", "key-new-wide", "key-old"], "abstained": false, "error": null}
+{"query_id": "q-key-latest", "candidate_record_ids": ["key-new-close", "key-new-wide", "key-old"], "final_record_ids": ["key-new-close", "key-new-wide", "key-old"], "abstained": false, "error": null}
+{"query_id": "q-key-time", "candidate_record_ids": ["key-old"], "final_record_ids": ["key-old"], "abstained": false, "error": null}
+{"query_id": "q-lamp-alias", "candidate_record_ids": ["lamp"], "final_record_ids": ["lamp"], "abstained": false, "error": null}
+{"query_id": "q-lamp-appearance", "candidate_record_ids": ["lamp"], "final_record_ids": ["lamp"], "abstained": false, "error": null}
+{"query_id": "q-lamp-compare", "candidate_record_ids": ["lamp"], "final_record_ids": ["lamp"], "abstained": false, "error": null}
+{"query_id": "q-semantic-synonym", "candidate_record_ids": [], "final_record_ids": [], "abstained": true, "error": null}
+{"query_id": "q-visual-only", "candidate_record_ids": [], "final_record_ids": [], "abstained": true, "error": null}
+{"query_id": "q-glasses", "candidate_record_ids": ["glasses"], "final_record_ids": ["glasses"], "abstained": false, "error": null}
+{"query_id": "q-negative", "candidate_record_ids": [], "final_record_ids": [], "abstained": true, "error": null}
+{"query_id": "q-negative-time", "candidate_record_ids": [], "final_record_ids": [], "abstained": true, "error": null}
+{"query_id": "q-not-captured", "candidate_record_ids": [], "final_record_ids": [], "abstained": true, "error": null}
+{"query_id": "q-expired", "candidate_record_ids": [], "final_record_ids": [], "abstained": true, "error": null}
+{"query_id": "q-unknown", "candidate_record_ids": ["lamp"], "final_record_ids": ["lamp"], "abstained": false, "error": null}
+{"query_id": "q-dev-cup", "candidate_record_ids": ["cup-dev"], "final_record_ids": ["cup-dev"], "abstained": false, "error": null}

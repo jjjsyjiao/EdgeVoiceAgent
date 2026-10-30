@@ -1,0 +1,16 @@
+{"query_id": "q-key-name", "owner_id": "owner-a", "text": "备用钥匙", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-key-name-family", "tags": ["exact", "multiple_frames"]}
+{"query_id": "q-key-alias", "owner_id": "owner-a", "text": "我的备份钥匙放哪儿", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-key-alias-family", "tags": ["alias"]}
+{"query_id": "q-key-latest", "owner_id": "owner-a", "text": "上次备用钥匙放哪里", "intent": "latest", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-key-latest-family", "tags": ["latest", "moved_object"]}
+{"query_id": "q-key-time", "owner_id": "owner-a", "text": "备用钥匙", "intent": "recall", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-key-time-family", "tags": ["time", "multiple_events"], "from_ts_ms": 1000, "to_ts_ms": 3000}
+{"query_id": "q-lamp-alias", "owner_id": "owner-a", "text": "阅读灯", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-lamp-alias-family", "tags": ["alias"]}
+{"query_id": "q-lamp-appearance", "owner_id": "owner-a", "text": "白色台灯", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-lamp-appearance-family", "tags": ["appearance_in_note"]}
+{"query_id": "q-lamp-compare", "owner_id": "owner-a", "text": "这个台灯是不是同一个", "intent": "compare", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-lamp-compare-family", "tags": ["visual_reference"]}
+{"query_id": "q-semantic-synonym", "owner_id": "owner-a", "text": "充电头", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-semantic-synonym-family", "tags": ["synonym_gap"]}
+{"query_id": "q-visual-only", "owner_id": "owner-a", "text": "那个有红色盖子的东西", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-visual-only-family", "tags": ["visual_only_gap"]}
+{"query_id": "q-glasses", "owner_id": "owner-a", "text": "眼镜", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-glasses-family", "tags": ["exact"]}
+{"query_id": "q-negative", "owner_id": "owner-a", "text": "护照", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-negative-family", "tags": ["no_answer"]}
+{"query_id": "q-negative-time", "owner_id": "owner-a", "text": "台灯", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-negative-time-family", "tags": ["no_answer", "time"], "from_ts_ms": 3000, "to_ts_ms": 4000}
+{"query_id": "q-not-captured", "owner_id": "owner-a", "text": "遥控器", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-not-captured-family", "tags": ["not_captured"]}
+{"query_id": "q-expired", "owner_id": "owner-a", "text": "旧雨伞", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-expired-family", "tags": ["expired"]}
+{"query_id": "q-unknown", "owner_id": "owner-a", "text": "台灯", "intent": "lookup", "split": "test", "leakage_group_id": "home-a", "query_family_id": "q-unknown-family", "tags": ["coverage_unknown"]}
+{"query_id": "q-dev-cup", "owner_id": "owner-dev", "text": "水杯", "intent": "lookup", "split": "dev", "leakage_group_id": "office-dev", "query_family_id": "q-dev-cup-family", "tags": ["alias"]}

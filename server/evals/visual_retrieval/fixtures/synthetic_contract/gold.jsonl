@@ -1,0 +1,16 @@
+{"query_id": "q-key-name", "coverage": "available", "relevant_event_ids": ["key-event-old", "key-event-new"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-key-alias", "coverage": "available", "relevant_event_ids": ["key-event-old", "key-event-new"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-key-latest", "coverage": "available", "relevant_event_ids": ["key-event-old", "key-event-new"], "annotation_note": "手写合成标签，仅用于契约回归。", "latest_event_id": "key-event-new"}
+{"query_id": "q-key-time", "coverage": "available", "relevant_event_ids": ["key-event-old"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-lamp-alias", "coverage": "available", "relevant_event_ids": ["lamp-event"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-lamp-appearance", "coverage": "available", "relevant_event_ids": ["lamp-event"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-lamp-compare", "coverage": "available", "relevant_event_ids": ["lamp-event"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-semantic-synonym", "coverage": "available", "relevant_event_ids": ["charger-event"], "annotation_note": "标签认定充电头指电源适配器，故意暴露没有别名时的语义漏召。"}
+{"query_id": "q-visual-only", "coverage": "available", "relevant_event_ids": ["box-event"], "annotation_note": "假设图片可见红色盖子，但fixture没有照片；只验证无文字描述时规则检索会漏召，不能评价视觉模型。"}
+{"query_id": "q-glasses", "coverage": "available", "relevant_event_ids": ["glasses-event"], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-negative", "coverage": "verified_absent", "relevant_event_ids": [], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-negative-time", "coverage": "verified_absent", "relevant_event_ids": [], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-not-captured", "coverage": "not_captured", "relevant_event_ids": [], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-expired", "coverage": "expired", "relevant_event_ids": [], "annotation_note": "手写合成标签，仅用于契约回归。"}
+{"query_id": "q-unknown", "coverage": "unknown", "relevant_event_ids": [], "annotation_note": "覆盖状态未审计：即使返回台灯，也不得算真阳性或误报。"}
+{"query_id": "q-dev-cup", "coverage": "available", "relevant_event_ids": ["cup-event-dev"], "annotation_note": "手写合成标签，仅用于契约回归。"}

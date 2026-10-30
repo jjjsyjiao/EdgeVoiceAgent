@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EdgeVoiceAgent-SDK · UI Design V3.1.0</title>
+<style>
+  :root{
+    --accent:#3B82F6;
+    --accent-soft:rgba(59,130,246,.35);
+    --bg-0:#04060b;
+    --bg-1:#0a1220;
+    --ink:#eaf0ff;
+    --ink-dim:rgba(234,240,255,.62);
+    --ink-faint:rgba(234,240,255,.34);
+    --glass:rgba(18,26,42,.55);
+    --glass-line:rgba(255,255,255,.09);
+    --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","JetBrains Mono","Roboto Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 760px at 50% -8%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+      radial-gradient(900px 700px at 88% 108%, rgba(139,92,246,.16), transparent 70%),
+      linear-gradient(180deg,var(--bg-1) 0%, var(--bg-0) 60%);
+    background-attachment:fixed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:40px 24px;
+    transition:background .6s ease;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .layout{display:flex;align-items:center;gap:56px;flex-wrap:wrap;justify-content:center;}
+
+  /* ============ Phone ============ */
+  .phone{
+    position:relative;
+    width:390px;height:844px;
+    border-radius:54px;
+    padding:12px;
+    background:linear-gradient(160deg,#2a3142,#10141d 55%,#05070c);
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,.05),
+      0 40px 90px -30px rgba(0,0,0,.9),
+      0 0 120px -10px var(--accent-soft);
+    transition:box-shadow .6s ease;
+    flex:0 0 auto;
+  }
+  .screen{
+    position:relative;
+    width:100%;height:100%;
+    border-radius:44px;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 50% 0%, #0d1728 0%, #070a12 45%, #04060a 100%);
+    display:flex;flex-direction:column;
+    isolation:isolate;
+  }
+  .screen::before{
+    /* ambient accent glow behind the orb */
+    content:"";
+    position:absolute;left:50%;top:46%;width:420px;height:420px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle, var(--accent-soft), transparent 62%);
+    filter:blur(30px);
+    opacity:.55;
+    transition:background .5s ease,opacity .5s ease;
+    pointer-events:none;z-index:0;
+  }
+
+  /* OS status bar */
+  .os-bar{
+    position:relative;z-index:3;
+    height:34px;flex:0 0 auto;
+    padding:0 26px 0 30px;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:13px;font-weight:600;letter-spacing:.2px;
+    color:var(--ink);
+  }
+  .os-right{display:flex;align-items:center;gap:6px;color:var(--ink);}
+  .os-right svg{opacity:.9;}
+
+  /* App top bar : Mode Badge + Telemetry */
+  .topbar{
+    position:relative;z-index:3;
+    flex:0 0 auto;
+    padding:2px 20px 12px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .mode-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 14px 8px 12px;
+    border-radius:999px;
+    background:var(--glass);
+    border:1px solid var(--glass-line);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    font-size:12.5px;font-weight:600;letter-spacing:.1px;
+    color:var(--ink);
+  }
+  .mode-badge .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 10px var(--accent);
+    animation:pulseDot 2s ease-in-out infinite;
+  }
+  .tele{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:7px 13px;border-radius:999px;
+    background:var(--glass);
+    border:1px solid var(--glass-line);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    font-family:var(--mono);font-size:11.5px;color:var(--ink-dim);
+  }
+  .tele b{color:var(--ink);font-weight:600;}
+  .sig{display:flex;align-items:flex-end;gap:2.5px;height:12px;}
+  .sig i{width:3px;border-radius:2px;background:var(--accent);opacity:.85;}
+  .sig i:nth-child(1){height:4px;} .sig i:nth-child(2){height:7px;}
+  .sig i:nth-child(3){height:10px;} .sig i:nth-child(4){height:12px;opacity:.35;}
+
+  /* Viewport (camera + orb) */
+  .viewport{
+    position:relative;z-index:2;
+    flex:1 1 auto;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+
+  /* ---- Layer 2 : Camera overlay ---- */
+  .camera-wrap{
+    position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:74%;z-index:4;
+    transition:all .5s cubic-bezier(.22,1,.36,1);
+  }
+  .camera-card{
+    position:relative;
+    height:170px;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background:
+      radial-gradient(120% 100% at 22% 18%, #24406b 0%, #132238 42%, #080d18 100%);
+    box-shadow:0 22px 48px -26px rgba(0,0,0,.95), inset 0 0 30px rgba(0,0,0,.4);
+    transition:opacity .4s ease,transform .5s cubic-bezier(.22,1,.36,1),height .5s ease;
+  }
+  /* synthetic "camera feed" scene */
+  .cam-scene{position:absolute;inset:0;filter:saturate(.9);}
+  .cam-scene .bokeh{
+    position:absolute;border-radius:50%;filter:blur(16px);opacity:.5;
+    background:radial-gradient(circle,var(--accent),transparent 70%);
+  }
+  .cam-scene .b1{width:120px;height:120px;left:12%;top:52%;}
+  .cam-scene .b2{width:80px;height:80px;left:58%;top:16%;opacity:.34;}
+  .cam-scene .b3{width:150px;height:150px;left:66%;top:58%;opacity:.28;}
+  .cam-scene .grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:26px 26px;
+    mix-blend-mode:overlay;
+  }
+  .cam-scene .vig{position:absolute;inset:0;background:radial-gradient(120% 100% at 50% 50%,transparent 40%,rgba(0,0,0,.6) 100%);}
+
+  /* laser scan line */
+  .scan{
+    position:absolute;left:0;right:0;height:46px;
+    background:linear-gradient(180deg,transparent, color-mix(in srgb,var(--accent) 45%, transparent), transparent);
+    opacity:.0;
+    animation:scanmove 3.2s linear infinite;
+  }
+  .screen[data-vision="on"] .scan{opacity:.9;}
+  @keyframes scanmove{0%{top:-46px;}100%{top:170px;}}
+
+  /* viewfinder brackets */
+  .cam-card .corner{position:absolute;width:16px;height:16px;border:2px solid rgba(255,255,255,.7);opacity:.55;}
+  .corner.tl{top:10px;left:10px;border-right:0;border-bottom:0;border-radius:6px 0 0 0;}
+  .corner.tr{top:10px;right:10px;border-left:0;border-bottom:0;border-radius:0 6px 0 0;}
+  .corner.bl{bottom:10px;left:10px;border-right:0;border-top:0;border-radius:0 0 0 6px;}
+  .corner.br{bottom:10px;right:10px;border-left:0;border-top:0;border-radius:0 0 6px 0;}
+
+  .cam-label{
+    position:absolute;left:14px;bottom:12px;z-index:3;
+    display:inline-flex;align-items:center;gap:7px;
+    padding:5px 10px;border-radius:8px;
+    background:rgba(6,10,18,.6);border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.4px;color:var(--ink);
+  }
+  .cam-label .live{width:6px;height:6px;border-radius:50%;background:#ef4444;box-shadow:0 0 8px #ef4444;animation:pulseDot 1.4s infinite;}
+  .cam-collapse{
+    position:absolute;right:12px;top:12px;z-index:3;
+    width:30px;height:30px;border-radius:10px;
+    display:grid;place-items:center;cursor:pointer;
+    background:rgba(6,10,18,.55);border:1px solid rgba(255,255,255,.14);
+    color:var(--ink);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .25s;
+  }
+  .cam-collapse:hover{background:rgba(255,255,255,.14);transform:scale(1.08);}
+
+  /* collapsed "Vision Off" pill */
+  .vision-pill{
+    display:none;
+    align-items:center;gap:8px;
+    margin:0 auto;
+    padding:8px 16px;border-radius:999px;
+    background:var(--glass);border:1px solid var(--glass-line);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    font-size:12px;color:var(--ink-dim);cursor:pointer;
+    width:fit-content;
+  }
+  .vision-pill b{color:var(--ink);font-weight:600;}
+  .screen[data-vision="off"] .camera-card{opacity:0;height:0;pointer-events:none;border:0;}
+  .screen[data-vision="off"] .vision-pill{display:inline-flex;}
+
+  /* ---- Layer 1 : Dynamic Orb ---- */
+  .orb-stage{
+    position:relative;z-index:3;
+    width:320px;height:320px;
+    display:grid;place-items:center;
+    margin-top:26px;
+  }
+  .orb{
+    position:relative;
+    width:200px;height:200px;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition:transform .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  .orb:active{transform:scale(.96);}
+
+  .halo{
+    position:absolute;inset:-42%;border-radius:50%;
+    background:radial-gradient(circle, var(--accent-soft) 0%, transparent 62%);
+    filter:blur(26px);
+    opacity:.7;transition:opacity .5s ease,background .5s ease;
+    pointer-events:none;
+  }
+  .orb::after{
+    content:"";position:absolute;inset:-14px;border-radius:50%;
+    border:1px solid color-mix(in srgb,var(--accent) 40%, transparent);
+    transition:border-color .4s ease;
+  }
+
+  .ripple{
+    position:absolute;inset:-6%;border-radius:50%;
+    border:1.5px solid var(--accent);
+    opacity:0;transform:scale(.86);
+    pointer-events:none;
+  }
+  .ring{
+    position:absolute;inset:-8px;border-radius:50%;opacity:0;
+    background:conic-gradient(from 0deg, transparent 0deg, var(--accent) 90deg, transparent 200deg);
+    -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 8px));
+    mask:radial-gradient(farthest-side, transparent calc(100% - 9px), #000 calc(100% - 8px));
+    transition:opacity .4s ease;
+    pointer-events:none;
+  }
+  .core{
+    position:absolute;inset:15%;border-radius:50%;
+    background:
+      radial-gradient(circle at 34% 28%, rgba(255,255,255,.6) 0%, transparent 34%),
+      radial-gradient(circle at 50% 55%, var(--accent) 0%, color-mix(in srgb,var(--accent) 62%, #060a12) 62%, #05070d 100%);
+    box-shadow:
+      0 0 60px color-mix(in srgb,var(--accent) 55%, transparent),
+      inset 0 -18px 40px rgba(0,0,0,.5),
+      inset 0 12px 26px rgba(255,255,255,.18);
+    will-change:transform;
+    transition:box-shadow .5s ease,background .5s ease;
+  }
+  .gloss{
+    position:absolute;left:26%;top:18%;width:34%;height:22%;border-radius:50%;
+    background:linear-gradient(180deg,rgba(255,255,255,.55),transparent);
+    filter:blur(6px);opacity:.65;pointer-events:none;
+  }
+
+  /* radial waveform bars */
+  .barswrap{position:absolute;inset:0;pointer-events:none;}
+  .barwrap{
+    position:absolute;left:50%;top:50%;
+    width:3px;height:22px;margin-left:-1.5px;margin-top:-22px;
+    transform-origin:50% 100%;
+  }
+  .bar{
+    width:100%;height:100%;border-radius:3px;
+    background:linear-gradient(to top, var(--accent), color-mix(in srgb,var(--accent) 30%, transparent));
+    transform-origin:50% 100%;transform:scaleY(.26);opacity:.42;
+    transition:opacity .45s ease,background .5s ease;
+    animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+    will-change:transform;
+  }
+
+  /* ---- state-driven visuals ---- */
+  .screen[data-state="IDLE_OBSERVING"] .core{animation:breathe 4.4s ease-in-out infinite;}
+  .screen[data-state="IDLE_OBSERVING"] .halo{opacity:.6;}
+
+  .screen[data-state="LISTENING"] .core{animation:breathe 2.4s ease-in-out infinite;}
+  .screen[data-state="LISTENING"] .bar{opacity:.92;animation-name:barWave;}
+  .screen[data-state="LISTENING"] .ripple1{animation:ripple 2.4s ease-out infinite;}
+  .screen[data-state="LISTENING"] .ripple2{animation:ripple 2.4s ease-out infinite .8s;}
+  .screen[data-state="LISTENING"] .ripple3{animation:ripple 2.4s ease-out infinite 1.6s;}
+
+  .screen[data-state="PROCESSING"] .core{animation:think 1.3s ease-in-out infinite;}
+  .screen[data-state="PROCESSING"] .ring{opacity:.95;animation:spin 1.05s linear infinite;}
+  .screen[data-state="PROCESSING"] .bar{opacity:.2;}
+  .screen[data-state="PROCESSING"] .halo{opacity:.85;}
+
+  .screen[data-state="SPEAKING"] .core{animation:speak .52s ease-in-out infinite;}
+  .screen[data-state="SPEAKING"] .bar{opacity:1;animation-name:barWaveBig;}
+  .screen[data-state="SPEAKING"] .ring{opacity:.5;animation:spin 2.6s linear infinite;}
+
+  .screen[data-state="INTERRUPTED"] .core{animation:snap .55s cubic-bezier(.22,1,.36,1) 1;}
+  .screen[data-state="INTERRUPTED"] .bar{opacity:.3;}
+
+  @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  @keyframes think{0%,100%{transform:scale(.98);}50%{transform:scale(1.03);}}
+  @keyframes speak{0%,100%{transform:scale(1,1);}25%{transform:scale(1.07,.93);}50%{transform:scale(.95,1.09);}75%{transform:scale(1.05,.96);}}
+  @keyframes snap{0%{transform:scale(1);}22%{transform:scale(.8);}100%{transform:scale(1);}}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @keyframes ripple{0%{transform:scale(.86);opacity:.75;}70%{opacity:.18;}100%{transform:scale(1.5);opacity:0;}}
+  @keyframes barWave{0%,100%{transform:scaleY(.3);}50%{transform:scaleY(1.05);}}
+  @keyframes barWaveBig{0%,100%{transform:scaleY(.45);}50%{transform:scaleY(1.75);}}
+  @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.45;transform:scale(.82);}}
+
+  /* flash overlay for barge-in */
+  .flash{position:absolute;inset:0;z-index:9;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 50% 44%, rgba(239,68,68,.85), transparent 62%);}
+  .flash.on{animation:flashHit .5s ease-out 1;}
+  @keyframes flashHit{0%{opacity:.9;}28%{opacity:.18;}58%{opacity:.55;}100%{opacity:0;}}
+
+  /* ---- status caption ---- */
+  .caption{
+    position:relative;z-index:3;
+    flex:0 0 auto;
+    text-align:center;padding:0 40px 16px;
+  }
+  .state-tag{
+    display:inline-block;margin-bottom:10px;
+    padding:5px 12px;border-radius:8px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;
+    color:var(--accent);
+    background:color-mix(in srgb,var(--accent) 14%, transparent);
+    border:1px solid color-mix(in srgb,var(--accent) 34%, transparent);
+    transition:all .4s ease;
+  }
+  .caption-main{font-size:15px;font-weight:500;color:var(--ink);line-height:1.5;
+    transition:opacity .3s ease;}
+  .caption-sub{margin-top:5px;font-size:12px;color:var(--ink-faint);letter-spacing:.2px;}
+
+  /* ---- bottom control bar ---- */
+  .bottombar{
+    position:relative;z-index:3;
+    flex:0 0 auto;
+    padding:14px 26px 30px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .bottombar::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,transparent,rgba(4,6,11,.72) 45%);
+    pointer-events:none;
+  }
+  .side{display:flex;align-items:center;gap:10px;flex:1;}
+  .side.right{justify-content:flex-end;}
+  .ctrl{
+    border:1px solid var(--glass-line);
+    background:var(--glass);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    color:var(--ink);
+    display:inline-flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .25s,border-color .25s,color .25s;
+  }
+  .ctrl:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);}
+  .ctrl:active{transform:scale(.94);}
+  .ctrl.round{width:50px;height:50px;border-radius:17px;}
+  .ctrl.round.active{
+    color:#04060b;background:var(--accent);border-color:transparent;
+    box-shadow:0 0 22px var(--accent-soft);
+  }
+  .ctrl.round.active svg{stroke:#04060b;}
+  .mode-chip{
+    padding:0 16px;height:44px;border-radius:14px;
+    font-size:12.5px;font-weight:600;gap:8px;letter-spacing:.2px;
+  }
+  .mode-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);}
+
+  .mic{
+    width:72px;height:72px;border-radius:50%;
+    background:linear-gradient(160deg, color-mix(in srgb,var(--accent) 92%, #fff 8%), color-mix(in srgb,var(--accent) 72%, #000 28%));
+    border:0;
+    box-shadow:0 0 0 8px color-mix(in srgb,var(--accent) 16%, transparent),
+               0 14px 34px -10px color-mix(in srgb,var(--accent) 80%, transparent);
+    color:#05070d;
+    position:relative;
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease,background .5s ease;
+  }
+  .mic:hover{transform:scale(1.05);}
+  .mic:active{transform:scale(.93);}
+  .mic svg{stroke:#05070d;}
+  .mic::after{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    border:1.5px solid color-mix(in srgb,var(--accent) 60%, transparent);
+    opacity:0;
+  }
+  .screen[data-state="LISTENING"] .mic::after{animation:micRing 1.8s ease-out infinite;}
+  @keyframes micRing{0%{transform:scale(1);opacity:.8;}100%{transform:scale(1.6);opacity:0;}}
+
+  /* ============ Debug drawer ============ */
+  .scrim{
+    position:absolute;inset:0;z-index:20;
+    background:rgba(2,4,8,.55);
+    opacity:0;pointer-events:none;transition:opacity .35s ease;
+  }
+  .scrim.open{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:absolute;top:0;right:0;height:100%;width:78%;z-index:21;
+    padding:26px 22px 30px 22px;
+    overflow-y:auto;
+    background:linear-gradient(200deg,rgba(20,28,44,.86),rgba(8,12,20,.92));
+    backdrop-filter:blur(26px) saturate(1.2);-webkit-backdrop-filter:blur(26px) saturate(1.2);
+    border-left:1px solid rgba(255,255,255,.12);
+    box-shadow:-30px 0 70px -20px rgba(0,0,0,.9);
+    transform:translateX(105%);
+    transition:transform .48s cubic-bezier(.22,1,.36,1);
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;}
+  .drawer-title{font-size:16px;font-weight:700;letter-spacing:.2px;}
+  .drawer-sub{font-size:11px;color:var(--ink-faint);font-family:var(--mono);margin-top:4px;letter-spacing:.4px;}
+  .icon-btn{
+    width:34px;height:34px;border-radius:11px;flex:0 0 auto;
+    border:1px solid var(--glass-line);background:rgba(255,255,255,.06);
+    color:var(--ink);display:grid;place-items:center;cursor:pointer;
+    transition:background .25s,transform .25s;
+  }
+  .icon-btn:hover{background:rgba(255,255,255,.16);transform:rotate(90deg);}
+
+  .seg{
+    display:flex;padding:4px;gap:4px;border-radius:15px;
+    background:rgba(255,255,255,.06);border:1px solid var(--glass-line);
+    margin-bottom:22px;
+  }
+  .seg-btn{
+    flex:1;padding:11px 8px;border-radius:11px;border:0;cursor:pointer;
+    background:transparent;color:var(--ink-dim);
+    font-family:var(--font);font-size:12px;font-weight:600;letter-spacing:.2px;
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .seg-btn.active{
+    color:#04060b;background:var(--accent);
+    box-shadow:0 8px 20px -8px color-mix(in srgb,var(--accent) 90%, transparent);
+  }
+  .seg-btn svg{stroke:currentColor;}
+
+  .section-label{
+    font-family:var(--mono);font-size:10px;letter-spacing:1.4px;
+    color:var(--ink-faint);text-transform:uppercase;
+    margin:20px 0 12px;
+  }
+  .card{
+    border-radius:16px;padding:14px 15px;
+    background:rgba(255,255,255,.045);border:1px solid var(--glass-line);
+    margin-bottom:12px;
+  }
+  .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .card-name{font-size:12px;color:var(--ink-dim);font-weight:500;}
+  .card-val{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink);}
+  .card-val small{font-size:10px;color:var(--ink-faint);font-weight:400;margin-left:2px;}
+
+  #rttChart{width:100%;height:86px;display:block;}
+
+  .bar-track{height:6px;border-radius:4px;background:rgba(255,255,255,.09);overflow:hidden;margin-top:9px;}
+  .bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 55%,transparent),var(--accent));
+    width:0;transition:width .7s cubic-bezier(.22,1,.36,1);}
+  .bar-fill.warn{background:linear-gradient(90deg,#f59e0b,#ef4444);}
+
+  .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .mini{
+    border-radius:14px;padding:12px 13px;
+    background:rgba(255,255,255,.045);border:1px solid var(--glass-line);
+  }
+  .mini .k{font-size:10.5px;color:var(--ink-faint);font-family:var(--mono);letter-spacing:.3px;}
+  .mini .v{font-size:15px;font-weight:600;margin-top:5px;font-family:var(--mono);}
+  .mini .v.ok{color:#10b981;} .mini .v.warn{color:#f59e0b;}
+  .drawer-note{
+    margin-top:14px;font-size:11px;line-height:1.6;color:var(--ink-faint);
+    padding:12px 14px;border-radius:12px;
+    border:1px dashed rgba(255,255,255,.14);
+  }
+
+  /* ============ Side legend panel ============ */
+  .panel{width:340px;max-width:92vw;}
+  .panel-kicker{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--accent);margin-bottom:12px;transition:color .4s ease;}
+  .panel h1{font-size:27px;line-height:1.25;font-weight:700;letter-spacing:-.3px;}
+  .panel h1 span{background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 40%,#fff));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transition:all .4s;}
+  .panel .desc{margin-top:14px;font-size:13.5px;line-height:1.75;color:var(--ink-dim);}
+  .legend{margin-top:24px;display:flex;flex-direction:column;gap:8px;}
+  .legend-item{
+    display:flex;align-items:center;gap:13px;
+    padding:12px 14px;border-radius:14px;cursor:pointer;
+    background:rgba(255,255,255,.03);border:1px solid var(--glass-line);
+    transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .legend-item:hover{background:rgba(255,255,255,.07);transform:translateX(4px);}
+  .legend-item.active{background:rgba(255,255,255,.09);border-color:color-mix(in srgb,var(--accent) 40%,transparent);}
+  .swatch{width:26px;height:26px;border-radius:9px;flex:0 0 auto;box-shadow:0 0 16px -2px currentColor;}
+  .legend-item .li-name{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.3px;}
+  .legend-item .li-desc{font-size:11.5px;color:var(--ink-faint);margin-top:2px;}
+  .panel .hint{margin-top:22px;font-size:12px;color:var(--ink-faint);line-height:1.7;}
+
+  @media (max-width:1080px){
+    .layout{gap:36px;}
+    .panel{width:390px;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ==================== DEVICE ==================== -->
+  <div class="phone">
+    <div class="screen" id="screen" data-state="IDLE_OBSERVING" data-vision="on">
+
+      <!-- OS status bar -->
+      <div class="os-bar">
+        <span>9:41</span>
+        <div class="os-right">
+          <div class="sig"><i></i><i></i><i></i><i></i></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>
+          <svg width="22" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="2" width="19" height="12" rx="3.5"/><rect x="3" y="4" width="14" height="8" rx="2" fill="currentColor" stroke="none"/><path d="M22 6v4"/></svg>
+        </div>
+      </div>
+
+      <!-- App top bar -->
+      <header class="topbar">
+        <div class="mode-badge">
+          <span class="dot"></span>
+          <span class="mode-text" id="modeText">Cloud · Realtime API</span>
+        </div>
+        <div class="tele">
+          <div class="sig"><i></i><i></i><i></i><i></i></div>
+          <span>RTT&nbsp;<b id="rttTop">42</b>ms</span>
+        </div>
+      </header>
+
+      <!-- Viewport -->
+      <div class="viewport">
+
+        <!-- Sheet 2 : Camera overlay -->
+        <div class="camera-wrap">
+          <div class="camera-card">
+            <div class="cam-scene">
+              <div class="bokeh b1"></div>
+              <div class="bokeh b2"></div>
+              <div class="bokeh b3"></div>
+              <div class="grid"></div>
+              <div class="vig"></div>
+            </div>
+            <div class="scan"></div>
+            <span class="corner tl"></span><span class="corner tr"></span>
+            <span class="corner bl"></span><span class="corner br"></span>
+            <div class="cam-label"><span class="live"></span>VISION&nbsp;ACTIVE · 5&nbsp;FPS</div>
+            <button class="cam-collapse" id="camCollapse" title="Collapse vision">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.6"/><path d="M3 3l18 18"/></svg>
+            </button>
+          </div>
+          <div class="vision-pill" id="visionPill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.6"/><path d="M3 3l18 18"/></svg>
+            <span>Vision <b>Off</b> · 视频抽帧链路已切断</span>
+          </div>
+        </div>
+
+        <!-- Sheet 1 : Dynamic Orb -->
+        <div class="orb-stage">
+          <div class="orb" id="orb">
+            <div class="halo"></div>
+            <div class="ripple ripple1"></div>
+            <div class="ripple ripple2"></div>
+            <div class="ripple ripple3"></div>
+            <div class="ring"></div>
+            <div class="core"></div>
+            <div class="gloss"></div>
+            <div class="barswrap" id="orbBars"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status caption -->
+      <div class="caption">
+        <div class="state-tag" id="stateTag">IDLE_OBSERVING</div>
+        <div class="caption-main" id="captionMain">Idle — observing ambient context.</div>
+        <div class="caption-sub" id="captionSub">静默观察态 · 说 “Hi Agent” 唤醒</div>
+      </div>
+
+      <!-- Bottom control bar -->
+      <footer class="bottombar">
+        <div class="side">
+          <button class="ctrl mode-chip" id="modeChip">
+            <span class="dot"></span><span id="modeChipText">Cloud</span>
+          </button>
+        </div>
+        <button class="ctrl mic" id="micBtn" title="Mic / Interrupt">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#05070d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21"/><path d="M8.5 21h7"/></svg>
+        </button>
+        <div class="side right">
+          <button class="ctrl round active" id="camBtn" title="Toggle vision">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h2l1.2-1.6h6.6L16.5 6h2A2.5 2.5 0 0 1 21 8.5v8A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
+          </button>
+          <button class="ctrl round" id="drawerBtn" title="Debug drawer">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/><circle cx="9" cy="7" r="2" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="8" cy="17" r="2" fill="currentColor" stroke="none"/></svg>
+          </button>
+        </div>
+      </footer>
+
+      <!-- barge-in flash -->
+      <div class="flash" id="flash"></div>
+
+      <!-- Debug Drawer -->
+      <div class="scrim" id="scrim"></div>
+      <aside class="drawer" id="drawer">
+        <div class="drawer-head">
+          <div>
+            <div class="drawer-title">Developer Debug Drawer</div>
+            <div class="drawer-sub">极客调试抽屉 · SDK v3.1.0</div>
+          </div>
+          <button class="icon-btn" id="drawerClose">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14"/><path d="M19 5L5 19"/></svg>
+          </button>
+        </div>
+
+        <div class="seg" id="modeSeg">
+          <button class="seg-btn active" data-mode="cloud">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 18a4 4 0 0 1 .6-7.96A5.5 5.5 0 0 1 17.7 9.4 4.2 4.2 0 0 1 17.5 18z"/></svg>
+            Cloud · Realtime
+          </button>
+          <button class="seg-btn" data-mode="local">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"/></svg>
+            On-Device · NPU
+          </button>
+        </div>
+
+        <div class="section-label">Network · RTT Latency</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-name">WebSocket Round-Trip</span>
+            <span class="card-val" id="rttVal">42<small>ms</small></span>
+          </div>
+          <canvas id="rttChart"></canvas>
+        </div>
+
+        <div class="section-label">Media Pipeline</div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-name">Ring Buffer · 内存水位</span>
+            <span class="card-val" id="ringVal">34<small>%</small></span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" id="ringBar" style="width:34%"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-name">Jitter Buffer · 丢包率</span>
+            <span class="card-val" id="lossVal">0.2<small>%</small></span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" id="lossBar" style="width:8%"></div></div>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <span class="card-name">Token 预算占用</span>
+            <span class="card-val"><span id="tokVal">12,480</span><small>/ 32,000</small></span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" id="tokBar" style="width:39%"></div></div>
+        </div>
+
+        <div class="section-label">Agent Governance</div>
+        <div class="mini-grid">
+          <div class="mini"><div class="k">MaxIterationGuard</div><div class="v ok" id="guardVal">07 / 20</div></div>
+          <div class="mini"><div class="k">Circuit Breaker</div><div class="v ok">CLOSED</div></div>
+          <div class="mini"><div class="k">SecuritySanitizer</div><div class="v ok" id="secVal">0 hit</div></div>
+          <div class="mini"><div class="k">Render FPS</div><div class="v" id="fpsVal">60</div></div>
+        </div>
+
+        <div class="drawer-note">
+          切换 Cloud / Local 将触达 <code>IAgentExecutor</code> 策略热切换，UI 顶部 Badge 与 RTT 指标实时联动。所有动效采用 Spring Physics 曲线，运行于独立渲染线程。
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ==================== LEGEND PANEL ==================== -->
+  <div class="panel">
+    <div class="panel-kicker">EDGEVOICEAGENT-SDK · V3.1.0</div>
+    <h1>沉浸式<span>灵动视界</span><br/>Dynamic Orb UI</h1>
+    <p class="desc">
+      摆脱传统聊天气泡，为全双工、多模态实时 Agent 打造有“生命感”的三层复合视界。
+      光球的形态与色彩严格绑定底层 <code>AgentState</code> 状态机。
+    </p>
+
+    <div class="legend" id="legend">
+      <div class="legend-item" data-state="IDLE_OBSERVING">
+        <span class="swatch" style="background:#3B82F6;color:#3B82F6"></span>
+        <div><div class="li-name">IDLE_OBSERVING</div><div class="li-desc">极光蓝 · 柔和呼吸光效，半径 ±5% 缩放</div></div>
+      </div>
+      <div class="legend-item" data-state="LISTENING">
+        <span class="swatch" style="background:#10B981;color:#10B981"></span>
+        <div><div class="li-name">LISTENING</div><div class="li-desc">翡翠绿 · 随麦克风 PCM 振幅扩散波纹</div></div>
+      </div>
+      <div class="legend-item" data-state="PROCESSING">
+        <span class="swatch" style="background:#8B5CF6;color:#8B5CF6"></span>
+        <div><div class="li-name">PROCESSING</div><div class="li-desc">赛博紫 · 环形流光高速旋转，云端/NPU 推理中</div></div>
+      </div>
+      <div class="legend-item" data-state="SPEAKING">
+        <span class="swatch" style="background:#F59E0B;color:#F59E0B"></span>
+        <div><div class="li-name">SPEAKING</div><div class="li-desc">曜石金 · 随 AudioTrack 波形纵向律动</div></div>
+      </div>
+      <div class="legend-item" data-state="INTERRUPTED">
+        <span class="swatch" style="background:#EF4444;color:#EF4444"></span>
+        <div><div class="li-name">INTERRUPTED</div><div class="li-desc">警示红 · 0.1s 内急缩并白闪，回归聆听</div></div>
+      </div>
+    </div>
+
+    <p class="hint">
+      点击左侧任一状态或光球即可预览动效 · 右滑 / 点击设置唤出极客调试抽屉，切换云端与端侧双模执行器。
+    </p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- DOM ---------- */
+  const screen     = document.getElementById('screen');
+  const orb        = document.getElementById('orb');
+  const orbBars    = document.getElementById('orbBars');
+  const flash      = document.getElementById('flash');
+  const stateTag   = document.getElementById('stateTag');
+  const capMain    = document.getElementById('captionMain');
+  const capSub     = document.getElementById('captionSub');
+  const modeText   = document.getElementById('modeText');
+  const modeChipText = document.getElementById('modeChipText');
+  const rttTop     = document.getElementById('rttTop');
+  const micBtn     = document.getElementById('micBtn');
+  const camBtn     = document.getElementById('camBtn');
+  const camCollapse= document.getElementById('camCollapse');
+  const visionPill = document.getElementById('visionPill');
+  const drawerBtn  = document.getElementById('drawerBtn');
+  const drawer     = document.getElementById('drawer');
+  const scrim      = document.getElementById('scrim');
+  const drawerClose= document.getElementById('drawerClose');
+  const modeChip   = document.getElementById('modeChip');
+
+  /* ---------- State definitions ---------- */
+  const STATES = {
+    IDLE_OBSERVING:{ accent:'#3B82F6',
+      main:'Idle — observing ambient context.',
+      sub:'静默观察态 · 说 “Hi Agent” 唤醒' },
+    LISTENING:{ accent:'#10B981',
+      main:'Listening… Speak anytime to interrupt.',
+      sub:'聆听中 · 随时开口即可打断' },
+    PROCESSING:{ accent:'#8B5CF6',
+      main:'Thinking… fusing multimodal context.',
+      sub:'大模型推理中 · CameraX 抽帧与语音时间戳对齐' },
+    SPEAKING:{ accent:'#F59E0B',
+      main:'Speaking… barge-in enabled.',
+      sub:'语音播报中 · 支持抢占打断' },
+    INTERRUPTED:{ accent:'#EF4444',
+      main:'Interrupted — recalibrating.',
+      sub:'已被打断 · AudioTrack 队列清空，回归聆听' }
+  };
+
+  let current = 'IDLE_OBSERVING';
+  let interruptTimer = null;
+  let processTimer = null;
+
+  function hexToRgba(hex,a){
+    const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  function setState(state, opts){
+    opts = opts || {};
+    current = state;
+    const s = STATES[state];
+
+    screen.dataset.state = state;
+    document.documentElement.style.setProperty('--accent', s.accent);
+    document.documentElement.style.setProperty('--accent-soft', hexToRgba(s.accent,.35));
+
+    stateTag.textContent = state;
+    capMain.textContent  = s.main;
+    capSub.textContent   = s.sub;
+
+    // legend highlight
+    document.querySelectorAll('.legend-item').forEach(el=>{
+      el.classList.toggle('active', el.dataset.state === state);
+    });
+
+    if (state === 'INTERRUPTED'){
+      flash.classList.remove('on');
+      void flash.offsetWidth;      // restart animation
+      flash.classList.add('on');
+    }
+
+    // auto-transitions for demo flow
+    clearTimeout(interruptTimer);
+    if (state === 'INTERRUPTED'){
+      interruptTimer = setTimeout(()=> setState('LISTENING'), 900);
+    }
+    clearTimeout(processTimer);
+    if (state === 'PROCESSING' && !opts.manual){
+      processTimer = setTimeout(()=> setState('SPEAKING'), 1500);
+    }
+  }
+
+  /* ---------- Build radial waveform bars ---------- */
+  const BAR_COUNT = 48;
+  const BAR_RADIUS = 108;   // orb radius (100) + gap
+  for (let i=0;i<BAR_COUNT;i++){
+    const wrap = document.createElement('div');
+    wrap.className = 'barwrap';
+    wrap.style.transform = `rotate(${ (360/BAR_COUNT)*i }deg) translateY(-${BAR_RADIUS}px)`;
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.animationDuration = (0.52 + Math.random()*0.7).toFixed(2) + 's';
+    bar.style.animationDelay    = (-Math.random()*1.2).toFixed(2) + 's';
+    wrap.appendChild(bar);
+    orbBars.appendChild(wrap);
+  }
+
+  /* ---------- Interaction : orb cycles states ---------- */
+  const CYCLE = ['IDLE_OBSERVING','LISTENING','PROCESSING','SPEAKING'];
+  orb.addEventListener('click', ()=>{
+    const i = CYCLE.indexOf(current);
+    setState(CYCLE[(i+1) % CYCLE.length]);
+  });
+
+  /* ---------- Mic button (barge-in capable) ---------- */
+  micBtn.addEventListener('click', ()=>{
+    if (current === 'IDLE_OBSERVING')      setState('LISTENING');
+    else if (current === 'LISTENING')      setState('PROCESSING');
+    else if (current === 'PROCESSING')     setState('IDLE_OBSERVING');
+    else if (current === 'SPEAKING')       setState('INTERRUPTED'); // 强行打断
+    else /* INTERRUPTED */                 setState('LISTENING');
+  });
+
+  /* ---------- Vision toggle ---------- */
+  function setVision(on){
+    screen.dataset.vision = on ? 'on' : 'off';
+    camBtn.classList.toggle('active', on);
+  }
+  camCollapse.addEventListener('click', ()=> setVision(false));
+  visionPill.addEventListener('click', ()=> setVision(true));
+  camBtn.addEventListener('click', ()=> setVision(screen.dataset.vision !== 'on'));
+
+  /* ---------- Debug drawer ---------- */
+  function openDrawer(){ drawer.classList.add('open'); scrim.classList.add('open'); }
+  function closeDrawer(){ drawer.classList.remove('open'); scrim.classList.remove('open'); }
+  drawerBtn.addEventListener('click', ()=>{ drawer.classList.contains('open') ? closeDrawer() : openDrawer(); });
+  drawerClose.addEventListener('click', closeDrawer);
+  scrim.addEventListener('click', closeDrawer);
+
+  /* ---------- Dual-mode executor switch ---------- */
+  let mode = 'cloud';
+  let rttBase = 42;
+  function setMode(m){
+    mode = m;
+    document.querySelectorAll('.seg-btn').forEach(b=> b.classList.toggle('active', b.dataset.mode === m));
+    const cloud = (m === 'cloud');
+    modeText.textContent     = cloud ? 'Cloud · Realtime API' : 'On-Device · NPU SLM';
+    modeChipText.textContent = cloud ? 'Cloud' : 'Local';
+    rttBase = cloud ? 42 : 8;
+  }
+  document.querySelectorAll('.seg-btn').forEach(b=> b.addEventListener('click', ()=> setMode(b.dataset.mode)));
+  modeChip.addEventListener('click', ()=> setMode(mode === 'cloud' ? 'local' : 'cloud'));
+
+  /* ---------- Legend ---------- */
+  document.querySelectorAll('.legend-item').forEach(el=>{
+    el.addEventListener('click', ()=> setState(el.dataset.state));
+  });
+
+  /* ---------- Telemetry simulation ---------- */
+  const rttVal  = document.getElementById('rttVal');
+  const ringVal = document.getElementById('ringVal'); const ringBar = document.getElementById('ringBar');
+  const lossVal = document.getElementById('lossVal'); const lossBar = document.getElementById('lossBar');
+  const tokVal  = document.getElementById('tokVal');  const tokBar  = document.getElementById('tokBar');
+  const guardVal= document.getElementById('guardVal');
+  const secVal  = document.getElementById('secVal');
+  const fpsVal  = document.getElementById('fpsVal');
+
+  const canvas = document.getElementById('rttChart');
+  const ctx = canvas.getContext('2d');
+  const HISTORY = 40;
+  let rttData = Array.from({length:HISTORY}, ()=> rttBase);
+
+  function sizeCanvas(){
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  function drawChart(){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    ctx.clearRect(0,0,w,h);
+    const accent = STATES[current].accent;
+
+    // grid
+    ctx.strokeStyle = 'rgba(255,255,255,.07)';
+    ctx.lineWidth = 1;
+    for (let i=0;i<=3;i++){
+      const y = (h/3)*i + .5;
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke();
+    }
+
+    const maxV = 90, minV = 0;
+    const stepX = w/(HISTORY-1);
+    const toY = v => h - ((v-minV)/(maxV-minV))*h;
+
+    // gradient fill
+    const grad = ctx.createLinearGradient(0,0,0,h);
+    grad.addColorStop(0, hexToRgba(accent,.34));
+    grad.addColorStop(1, hexToRgba(accent,0));
+    ctx.beginPath();
+    rttData.forEach((v,i)=>{ i ? ctx.lineTo(i*stepX, toY(v)) : ctx.moveTo(0, toY(v)); });
+    ctx.lineTo(w,h); ctx.lineTo(0,h); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+
+    // line
+    ctx.beginPath();
+    rttData.forEach((v,i)=>{ i ? ctx.lineTo(i*stepX, toY(v)) : ctx.moveTo(0, toY(v)); });
+    ctx.strokeStyle = accent; ctx.lineWidth = 2;
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.shadowColor = hexToRgba(accent,.8); ctx.shadowBlur = 10;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // head dot
+    const lastX = w, lastY = toY(rttData[HISTORY-1]);
+    ctx.beginPath(); ctx.arc(lastX-1, lastY, 3, 0, Math.PI*2);
+    ctx.fillStyle = '#fff'; ctx.fill();
+  }
+
+  function tick(){
+    const jitter = (Math.random()-0.45) * (mode==='cloud' ? 16 : 4);
+    const v = Math.max(3, rttBase + jitter);
+    rttData.push(v); rttData.shift();
+    const shown = Math.round(rttData[HISTORY-1]);
+    rttTop.textContent = shown;
+    rttVal.innerHTML = shown + '<small>ms</small>';
+    drawChart();
+
+    // ring buffer watermark
+    const ring = 30 + Math.random()*14;
+    ringVal.innerHTML = ring.toFixed(0) + '<small>%</small>';
+    ringBar.style.width = ring + '%';
+    ringBar.classList.toggle('warn', ring > 80);
+
+    // jitter buffer loss
+    const loss = Math.random()*0.9;
+    lossVal.innerHTML = loss.toFixed(1) + '<small>%</small>';
+    lossBar.style.width = Math.min(100, loss*30) + '%';
+    lossBar.classList.toggle('warn', loss > 1.5);
+
+    // token budget creeping up
+    const tok = 12480 + Math.round(Math.random()*90);
+    tokVal.textContent = tok.toLocaleString();
+    tokBar.style.width = (tok/32000*100).toFixed(1) + '%';
+    tokBar.classList.toggle('warn', tok/32000 > .8);
+
+    // governance mini-stats
+    guardVal.textContent = String(3 + Math.floor(Math.random()*10)).padStart(2,'0') + ' / 20';
+    secVal.textContent = (Math.random() > .8 ? 1 : 0) + ' hit';
+    fpsVal.textContent = (current === 'PROCESSING' || current === 'SPEAKING') ? '60' : '120';
+  }
+
+  window.addEventListener('resize', ()=>{ sizeCanvas(); drawChart(); });
+
+  /* ---------- init ---------- */
+  setMode('cloud');
+  setState('IDLE_OBSERVING');
+  sizeCanvas();
+  tick();
+  setInterval(tick, 900);
+})();
+</script>
+</body>
+</html>
